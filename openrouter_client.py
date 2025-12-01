@@ -37,16 +37,32 @@ class OpenRouterClient:
         }
         
         try:
+            print(f"Sending request to {self.base_url} with model {self.model}")
+            # print(f"Headers: {self.headers}") # Be careful not to log full API key
+            
             response = requests.post(
                 self.base_url,
                 headers=self.headers,
                 json=payload,
                 timeout=30
             )
+            
+            if response.status_code != 200:
+                print(f"API Error Status: {response.status_code}")
+                print(f"API Error Body: {response.text}")
+            
             response.raise_for_status()
             
             data = response.json()
-            return data["choices"][0]["message"]["content"]
+            # print(f"API Response Data: {data}")
+            
+            if "choices" in data and len(data["choices"]) > 0:
+                content = data["choices"][0]["message"]["content"]
+                print(f"Successfully got content: {content[:50]}...")
+                return content
+            else:
+                print("No choices in response")
+                return "I'm sorry, I received an empty response."
         
         except requests.exceptions.RequestException as e:
             print(f"Error calling OpenRouter API: {e}")
