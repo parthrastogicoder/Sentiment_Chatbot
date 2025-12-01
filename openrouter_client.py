@@ -18,8 +18,8 @@ class OpenRouterClient:
            "HTTP-Referer": "http://localhost:8000",  # Required for OpenRouter
             "X-Title": "Sentiment Chatbot"  # Optional, for rankings
         }
-        # Using openai/gpt-oss-20b free model
-        self.model = "openai/gpt-oss-20b"
+        # Using meta-llama/llama-3.3-70b-instruct:free (verified working)
+        self.model = "meta-llama/llama-3.3-70b-instruct:free"
     
     def chat(self, messages: List[Dict[str, str]]) -> str:
         """
