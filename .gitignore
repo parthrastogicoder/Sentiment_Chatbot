@@ -23,8 +23,6 @@ wheels/
 .installed.cfg
 *.egg
 
-# Environment variables
-.env
 
 # Database
 *.db
