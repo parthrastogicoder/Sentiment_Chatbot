@@ -261,5 +261,3 @@ Parth Rastogi
 https://github.com/parthrastogicoder/Sentiment_Chatbot
 
 ---
-
-**Built with ❤️ for LiaPlus Assignment**
